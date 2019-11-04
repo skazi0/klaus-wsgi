@@ -39,7 +39,7 @@ def make_autoreloading_app(repos_root, *args, **kwargs):
             # Refresh inner application with new repo list
             print("Reloading repository list...")
             _.inner_app = make_app(
-                [os.path.join(repos_root, x) for x in os.listdir(repos_root)],
+                [os.path.join(repos_root, x) for x in os.listdir(repos_root) if not x.startswith('.')],
                 *args, **kwargs
             )
             _.should_reload = False
